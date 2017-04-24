@@ -1,7 +1,8 @@
 # Js_QuestionnaireInvestigation
 
+问卷调查JS 模板 增删改 上下移动
 
-create a new repository on the command line
+#创建一个仓库
 
 echo "# Js_QuestionnaireInvestigation" >> README.md
 git init
