@@ -1,5 +1,5 @@
 $(document).ready(function(e) {
-	$(".btwen_text").val("题目");
+/*	$(".btwen_text").val("题目");
 	$(".btwen_text_dx").val("单选题目");
 	$(".btwen_text_duox").val("多选题目");
 	$(".btwen_text_tk").val("填空题目");
@@ -9,7 +9,7 @@ $(document).ready(function(e) {
 		var xxkjs = $(this).index();
 		$(this).addClass("on").siblings().removeClass("on");
 		$(".xxk_conn").children(".xxk_xzqh_box").eq(xxkjs).show().siblings().hide();
-	});
+	});*/
 
 	//鼠标移上去显示按钮
 	$(".movie_box").hover(function() {
@@ -68,7 +68,7 @@ $(document).ready(function(e) {
 	$(".del").live("click", function() {
 		var czxx = $(this).parent(".kzqy_czbut").parent(".movie_box");
 		var zgtitle_gs = czxx.parent(".yd_box").find(".movie_box").length;
-		var xh_num = 0;
+		var xh_num = 1;
 		//重新编号
 		czxx.parent(".yd_box").find(".movie_box").each(function() {
 			$(".yd_box").children(".movie_box").eq(xh_num).find(".nmb").text(xh_num);

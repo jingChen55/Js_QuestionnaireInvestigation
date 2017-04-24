@@ -9,13 +9,62 @@
     <script type="text/javascript">
     $(function() {
         $('#addquerstions').change(function() {
+
+            // debugger
             var index = $(this).val(); //选择添加问题的类型
+            if (index == "-1") {
+                return;
+            }
             var movie_box = '<div class="movie_box" style="border: 1px solid rgb(255, 255, 255);"></div>';
-            var wjdc_list = '<ul class="wjdc_list">'; //问答 单选 多选
+            var Grade = $(".yd_box").find(".movie_box").length + 1;
+            switch (index) {
+                case "0": //单选
+                case "1": //多选
+                case "2": //问答
+                    var wjdc_list = '<ul class="wjdc_list"></ul>'; //问答 单选 多选
+                    var danxuan = "";
+                    if (index == "0") {
+                        danxuan = '【单选】';
+                    } else if (index == "1") {
+                        danxuan = '【多选】';
+                    } else if (index == "2") {
+                        danxuan = '【问答】';
+                    }
+                    wjdc_list = $(wjdc_list).append(' <li><div class="tm_btitlt"><i class="nmb">' + Grade + '</i>. <i class="btwenzi">请编辑问题？</i><span class="tip_wz">' + danxuan + '</span></div></li>');
+                    if (index == "2") {
+                        wjdc_list = $(wjdc_list).append('<li>  <label> <textarea name="" cols="" rows="" class="input_wenbk btwen_text btwen_text_dx" ></textarea></label> </li>');
+                    }
+                    movie_box = $(movie_box).append(wjdc_list);
+                    movie_box = $(movie_box).append('<div class="dx_box" data-t="' + index + '"></div>');
+
+                    break;
+                case "3":
+                    var wjdc_list = ' <div class="wjdc_list"><h4 class="title_wjht"><i class="nmb">' + Grade + '</i>. 请编辑问题!<span class="tip_wz">【矩阵】</span></h4>'
+                    +' <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tswjdc_table"><tbody></tbody></table></div>'; //问答 单选 多选
+
+                    movie_box = $(movie_box).append(wjdc_list);
+                    movie_box = $(movie_box).append('<div class="dx_box" data-t="' + index + '"></div>');
+                    break;
+
+            }
 
 
 
-            $(".yd_box").append();
+            $(movie_box).hover(function() {
+                var html_cz = "<div class='kzqy_czbut'><a href='javascript:void(0)' class='sy'>上移</a><a href='javascript:void(0)'  class='xy'>下移</a><a href='javascript:void(0)'  class='bianji'>编辑</a><a href='javascript:void(0)' class='del' >删除</a></div>"
+                $(this).css({
+                    "border": "1px solid #0099ff"
+                });
+                $(this).children(".wjdc_list").after(html_cz);
+            }, function() {
+                $(this).css({
+                    "border": "1px solid #fff"
+                });
+                $(this).children(".kzqy_czbut").remove();
+                //$(this).children(".dx_box").hide(); 
+            });
+            $(".yd_box").append(movie_box);
+
         });
     });
     </script>
@@ -64,7 +113,7 @@
                     <textarea name="" cols="" rows="" class="input_wenbk btwen_text btwen_text_duox" placeholder="多选题目"></textarea>
                     <div class="title_itram">
                         <div class="kzjxx_iteam">
-                            <input name="" type="radio" value="" class="dxk">
+                            <input name="" type="checkbox" value="" class="dxk">
                             <input name="" type="text" class="input_wenbk" value="选项" placeholder="选项">
                             <label>
                                 <input name="" type="checkbox" value="" class="fxk">
