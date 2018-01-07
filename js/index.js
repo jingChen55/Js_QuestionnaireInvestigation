@@ -67,15 +67,16 @@ $(document).ready(function(e) {
 	//删除
 	$(".del").live("click", function() {
 		var czxx = $(this).parent(".kzqy_czbut").parent(".movie_box");
-		var zgtitle_gs = czxx.parent(".yd_box").find(".movie_box").length;
+		czxx.remove();
+		var zgtitle_gs = $(".yd_box").find(".movie_box");
 		var xh_num = 1;
 		//重新编号
-		czxx.parent(".yd_box").find(".movie_box").each(function() {
-			$(".yd_box").children(".movie_box").eq(xh_num).find(".nmb").text(xh_num);
+		zgtitle_gs.each(function() {
+			 
+				$(this).find(".nmb").text(xh_num);
 			xh_num++;
-			//alert(xh_num);
 		});
-		czxx.remove();
+	
 	});
 
 	//编辑
